@@ -7,7 +7,7 @@ Created on Sat Dec 14 23:04:26 2019
 
 import pygame
 
-class ship:
+class Ship:
     '''A class to manage the ship'''
     def __init__(self, ai_game):
         '''Initialize the ship and set its starting position'''
