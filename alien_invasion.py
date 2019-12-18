@@ -43,7 +43,7 @@ class AlienInvasion:
             self._check_events()
             # Update the status of the ship and bullet
             self.ship.update()
-            self.bulles.update()
+            self.bullets.update()
             # Redraw the screen during each pass through the loop
             self._update_screen()
             
