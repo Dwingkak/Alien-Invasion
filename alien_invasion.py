@@ -47,6 +47,12 @@ class AlienInvasion:
             # Redraw the screen during each pass through the loop
             self._update_screen()
             
+            # Get rid of bullets that have disappeared.
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            print(len(self.bullets))
+            
             
     def _check_events(self):
         '''Respond to key presses and mouse events'''
