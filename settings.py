@@ -27,4 +27,7 @@ class Settings:
         
         # Alien settings
         self.alien_speed = 1.0
+        self.fleet_drop_speed = 10
+        # Fleet direction of 1 represent right; -1 represent left.
+        self.fleet_direction = 1
         
