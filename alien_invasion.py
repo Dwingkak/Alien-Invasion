@@ -45,9 +45,10 @@ class AlienInvasion:
         while True:
             # Watch for keyboard and mouse event
             self._check_events()
-            # Update the status of the ship and bullet
+            # Update the status of the ship, aliens and bullet
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             # Redraw the screen during each pass through the loop
             self._update_screen()
             
@@ -99,6 +100,10 @@ class AlienInvasion:
                 self.bullets.remove(bullet)
         # Print statement to make sure all bullets are discarded
         # print(len(self.bullets))
+                
+    def _update_aliens(self):
+        '''Update the positions of all aliens in the fleet.'''
+        self.aliens.update()
                 
     def _create_fleet(self):
         '''Create the fleet of aliens.'''
