@@ -74,11 +74,12 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
         elif event.key == pygame.K_t:
-            self.settings.bullet_width = 100
-            self.settings.bullets_allowed = 10
-        elif event.key == pygame.K_o:
-            self.setting.bullet_width = 3
-            self.settings.bullets_allowed = 3
+            if self.settings.bullet_width == 3:
+                self.settings.bullet_width = 100
+                self.settings.bullets_allowed = 10
+            else:
+                self.settings.bullet_width = 3
+                self.settings.bullet_alllowed = 3
         elif event.key == pygame.K_q:
             pygame.quit()
             sys.exit()
