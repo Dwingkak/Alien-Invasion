@@ -74,16 +74,20 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
         elif event.key == pygame.K_t:
-            if self.settings.bullets_test:
-                self.settings.bullet_width = 100
-                self.settings.bullets_allowed = 10
-                self.settings.bullets_test = False
-            else:
-                self.settings.bullet_width = 3
-                self.settings.bullets_allowed = 3
+            self._testing_key()
         elif event.key == pygame.K_q:
             pygame.quit()
             sys.exit()
+    
+    def _testing_key(self):
+        '''Control the effect of a test key'''
+        if self.settings.bullets_test:
+            self.settings.bullet_width = 100
+            self.settings.bullets_allowed = 10
+            self.settings.bullets_test = False
+        else:
+            self.settings.bullet_width = 3
+            self.settings.bullets_allowed = 3  
             
     def _check_keyup_events(self, event):
         '''Respond to key releases'''
@@ -112,14 +116,17 @@ class AlienInvasion:
         
         # Check for any bullets that have hit the aliens.
         # If so, get rid of the bullet and the alien.
+        self._check_bullet_alien_collision()
+    
+    def _check_bullet_alien_collision(self):
+        '''Respond to bullet-alien collision'''
+        # Remove any bullets and aliens that have collided
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
-        
         if not self.aliens:
-            # Destroy existing bullets and create new fleet.
             self.bullets.empty()
             self._create_fleet()
-                
+    
     def _update_aliens(self):
         '''
         Check if the fleet is at an edge,
