@@ -52,11 +52,12 @@ class AlienInvasion:
         while True:
             # Watch for keyboard and mouse event
             self._check_events()
-            # Update the status of the ship, aliens and bullet
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
-            # Redraw the screen during each pass through the loop
+            if self.stats.game_active:
+                # Update the status of the ship, aliens and bullet
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
+                # Redraw the screen during each pass through the loop
             self._update_screen()
             
     def _check_events(self):
@@ -202,19 +203,22 @@ class AlienInvasion:
         
     def _ship_hit(self):
         '''Respnd to the ship being hit by an alien'''
-        # Decrement ships_left
-        self.stats.ship_left -= 1
-        
-        # Get rid of any remaining aliens and bullets
-        self.aliens.empty()
-        self.bullets.empty()
-        
-        # Create a new fleet and center the ship
-        self._create_fleet()
-        self.ship.center_ship()
-        
-        # Pause
-        sleep(0.5)
+        if self.stats.ship_left > 0:
+            # Decrement ships_left
+            self.stats.ship_left -= 1
+            
+            # Get rid of any remaining aliens and bullets
+            self.aliens.empty()
+            self.bullets.empty()
+            
+            # Create a new fleet and center the ship
+            self._create_fleet()
+            self.ship.center_ship()
+            
+            # Pause
+            sleep(0.5)
+        else:
+            self.stats.game_active = False
     
     def _update_screen(self):
         '''Update images on the screen and flip to the new screen.'''
