@@ -12,7 +12,7 @@ class Button:
     def __init__(self, ai_game, msg):
         '''Initialize button attribute'''
         self.screen = ai_game.screen
-        self.screen_rect = self.sreen.get_rect()
+        self.screen_rect = self.screen.get_rect()
         
         # Set the dimension and properties of the button
         self.width, self.height = 200, 50
