@@ -117,6 +117,7 @@ class AlienInvasion:
         elif difficulty == "hard":
             self.settings.hard_difficulty_mode()
         self.stats.game_active = True
+        self.sb.prep_score()
         
         # Get rid of any remaining aliens and bullets.
         self.aliens.empty()
