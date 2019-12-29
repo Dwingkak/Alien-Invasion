@@ -151,7 +151,7 @@ class AlienInvasion:
     def _testing_key(self):
         '''Control the effect of a test key'''
         if self.settings.bullets_test:
-            self.settings.bullet_width = 100
+            self.settings.bullet_width = 300
             self.settings.bullets_allowed = 10
             self.settings.bullets_test = False
         else:
@@ -194,7 +194,8 @@ class AlienInvasion:
             self.bullets, self.aliens, True, True)
         
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points
             self.sb.prep_score()
         
         if not self.aliens:
