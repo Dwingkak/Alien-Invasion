@@ -46,6 +46,9 @@ class Settings:
         
         # fleet direction of 1 represent right; -1  represent left.
         self.fleet_direction = 1
+        
+        # Scoring
+        self.alien_points = 50
     
     def medium_difficulty_mode(self):
         '''Set the game into medium difficulty'''
@@ -55,6 +58,9 @@ class Settings:
         
         # fleet direction of 1 represent right; -1  represent left.
         self.fleet_direction = 1
+        
+        # Scoring
+        self.alien_points = 50
     
     def hard_difficulty_mode(self):
         '''Set the game into hard difficulty'''
@@ -64,6 +70,9 @@ class Settings:
         
         # fleet direction of 1 represent right; -1  represent left.
         self.fleet_direction = 1
+        
+        # Scoring
+        self.alien_points = 50
     
     def increase_speed(self):
         '''Increase speed settings.'''
